@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+<body>
+    <!-- بداية اللعبة -->
+    
+    <div class="container">
+        <button id="theme-toggle">☀️</button>
+        <!-- معلو مات اللعبة -->
+        <div class="game-info">
+            <div class="game-name">Hangman</div>
+            <div class="hint"><p>Hint:<span></span></p>  </div>
+            <div class="category">
+                WordFrom : <span></span>
+            </div>
+        </div>
+        <hr>
+            <!-- صف شايل جزئين جزء الشخص وجزءالكلمات -->
+            <div class="row">
+                <!-- جزء الشخص والمكوانات بتاعته -->
+                <div class="hangman-draw">
+                 <div class="the-draw">
+                    <div class="the-stand"></div>
+                    <div class="the-hang"></div>
+                    <div class="the-rope"></div>
+                    <div class="the-man">
+                        <div class="head"></div>
+                        <div class="body"></div>
+                        <div class="hands"></div>
+                        <div class="legs"></div>
+                    </div>
+                 </div>
+                </div>
+                <!-- جزء الحروف  -->
+                <div class="letters"></div>
+            </div>
+            <hr>
+        <div class="latters-guess"></div>
+    </div>
+    <audio src="/audio/False.mp3" id="fail" preload="auto"></audio>
+    <audio src="/audio/Succes.mp3" id="success" preload="auto"></audio>
+    <audio src="/audio/Win sound effect no copyright.mp3" id="win" preload="auto"></audio>
+    <audio src="/audio/y2mate.com - Arcade game over sound effect.mp3" id="lose" preload="auto"></audio>
+    <footer>
+        <div class="social">
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/AbnElmarsla/">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </li>
+
+                <li>
+                <a href="https://wa.me/+201150968735">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                </li>
+            
+                <li>
+                <a href="https://www.instagram.com/Mersvl1/?fbclid=IwAR1auzU6LWBdMARJ8pzq9kezI-_-immhsMOtJv9rgipoWxseNfHXlTHrYCM">
+                    <i class="fa-brands fa-instagram"></i>
+                </li>
+                </a>
+            </ul>
+        </div>
+        Made By <a href="https://www.linkedin.com/in/mostafa-hussin-mersal-445530246/"><span>Mersal</span></a>
+    
+    </footer>
+</body>
+<script src="main.js"></script>
+</html>

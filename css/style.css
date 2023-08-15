@@ -1,0 +1,528 @@
+:root{
+    --main-color:#222;
+    --main-thick:4px;
+}
+
+*{
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.7s;
+    list-style: none;
+    
+
+}
+.container{
+ margin: 20px auto;
+ max-width: 1000px;
+ overflow: hidden;   
+}
+.row{
+    display: flex;
+}
+
+.game-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+}
+.game-info .game-name{
+    flex: 1;
+}
+.game-info .category{
+    flex: 1;
+    text-align: right;
+}
+.game-info .category span{
+    text-transform: capitalize;
+    color: #E91E63;
+    font-weight: bold;
+}
+
+/* زيادة من عندي للتدريب */
+
+
+.hint span{
+    display: none;
+    font-weight: bold;
+    transition: 0.4s;
+        
+    }
+.hint:hover span{
+    display: inline;
+    color: #E91E63; 
+    
+}
+.hangman-draw{
+    flex: 1;
+    background-color: #F8F8F8;
+    padding: 20px;
+    height: 324px;
+    transition: 0.7s;
+    margin: 10px 0 ;
+}
+.hangman-draw .the-draw{
+    width: 60px;
+    height: 280px;
+    border-bottom: 4px solid #222;
+    position: relative;
+    margin: auto;
+    left: -60px;
+    display: none;
+
+}
+.hangman-draw .the-stand{
+content: "";
+position: absolute;
+width: 4px;
+background-color: var(--main-color);
+height: 100%;
+left: 50%;
+transform: translateX(-50%);
+display: none;
+}
+.hangman-draw .the-hang{
+    display: none;
+}
+.hangman-draw .the-hang::before{
+    content: "";
+    position: absolute;
+    width: 100px;
+    background-color: var(--main-color);
+    height: 4px;
+    left: 30px;
+    top: 15px;
+    }
+
+.hangman-draw .the-hang::after {
+content: "";
+position: absolute;
+width: 4px;
+background-color: var(--main-color);
+height: 30px;
+left: 130px;
+top: 15px;
+}
+
+.hangman-draw .the-rope{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: absolute;
+    top: 42px;
+    left: 98px;
+    border: 3px dashed #222;
+    display: none;
+
+}
+
+.hangman-draw .the-man .head {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 52px;
+    left: 108px;
+    border: 3px solid #222;
+    display: none;
+}
+
+.hangman-draw .the-man .body {
+    width: 4px;
+    background-color: #222;
+    height: 120px;
+    position: absolute;
+    top: 100px;
+    left: 131px;
+    display: none;
+}
+
+.hangman-draw .the-man .hands{
+    display: none;
+}
+.hangman-draw .the-man .hands:after {
+    content: "";
+    width: 4px;
+    background-color: #222;
+    height: 50px;
+    transform: rotate(64deg);
+    position: absolute;
+    top: 115px;
+    left: 151px;
+}
+
+.hangman-draw .the-man .hands:before {
+    content: "";
+    width: 4px;
+    background-color: #222;
+    height: 50px;
+    transform: rotate(-64deg);
+    position: absolute;
+    top: 115px;
+    left: 111px;
+}
+.hangman-draw .the-man .legs{
+display: none;
+}
+.hangman-draw .the-man .legs:after {
+    content: "";
+    width: 4px;
+    background-color: #222;
+    height: 60px;
+    transform: rotate(-143deg);
+    position: absolute;
+    top: 170px;
+    left: 114px;
+}
+
+.hangman-draw .the-man .legs:before {
+    content: "";
+    width: 4px;
+    background-color: #222;
+    height: 60px;
+    transform: rotate(317deg);
+    position: absolute;
+    top: 170px;
+    left: 150px;
+    /* rotate: 95deg; */
+}
+.hangman-draw.wrong-1 .the-draw{
+    display: block;
+}
+.hangman-draw.wrong-2 .the-stand{
+    display: block;
+}
+.hangman-draw.wrong-3 .the-hang{
+    display: block;
+}
+.hangman-draw.wrong-4 .the-rope{
+    display: block;
+}
+.hangman-draw.wrong-5 .head{
+    display: block;
+}
+.hangman-draw.wrong-6 .body{
+    display: block;
+}
+.hangman-draw.wrong-7 .hands{
+    display: block;
+}
+.hangman-draw.wrong-8 .legs{
+    display: block;
+}
+
+.letters{
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+.letters.finished{
+    pointer-events: none;
+}
+.letters .letter-box {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    margin: 5px;
+    background-color: #009688;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 12px;
+    padding: 10px;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.letters .letter-box:hover{
+    transform:scale(1.05) rotate(5deg);
+    background-color: #04a998;
+}
+
+.letters .letter-box.clicked{
+    background-color: #333;
+    opacity: .2;
+    pointer-events: none;
+}
+
+.latters-guess{
+    margin: 10px auto;
+    background-color: #F8F8F8;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 104px;
+    transition: 0.7s;
+}
+
+.latters-guess span{
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 60px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #fdfdfd;
+    border-bottom: 3px solid #222;
+    transition: 0.3s;
+}
+
+.latters-guess .has-space{
+    background:none;
+    border-bottom: none;
+    position: relative;
+}
+.latters-guess .has-space::after{
+    content: "space";
+    text-transform: capitalize;
+    font-size: 10px;
+    width: 30px;
+    height: 4px;
+    border: 2px solid rgb(26, 20, 98);
+    margin: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+
+.winPopup, .popup {
+    position: fixed;
+    background-color: #009688;
+    color: white;
+    padding: 100px 20px;
+    line-height: 1.6em;
+    width: 80%;
+    top: 15%;
+    left: 10%;
+    text-align: center;
+    font-size: 40px;
+    margin: auto;
+    border: 1px solid #ccc;
+
+}
+
+
+.New-but{
+    padding: 20px;
+    background-color: #ffffff;
+    color: #1f614f;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 29px;
+}
+
+/* أنماط الوضع النهاري */
+body {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* أنماط الوضع الليلي */
+body.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.dark-mode .latters-guess{
+background-color: black;
+}
+body.dark-mode .latters-guess span{
+    background-color: grey;
+    border-bottom:3px solid white;
+    }
+body.dark-mode .letters span:hover{
+     background-color: #E91E63;  
+    }
+body.dark-mode .latters-guess span.has-space{
+    color: white;
+    background-image: none;
+    background: none;
+    border: none;
+    }
+    body.dark-mode .latters-guess span.has-space::after{
+        content: "space";
+    text-transform: capitalize;
+    font-size: 10px;
+    width: 30px;
+    height: 4px;
+    border: 2px solid rgb(255, 255, 255);
+    margin: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    }
+body.dark-mode .letter-box{
+    background-color: #e91e628c;
+    }
+
+body.dark-mode .hangman-draw{
+    background-color: grey;
+    border-color: white;
+}
+body.dark-mode .winPopup{
+    background-color: rgb(137 17 57);
+    
+}
+body.dark-mode .popup{
+    background-color: rgb(137 17 57);
+}
+body.dark-mode .New-but{
+    color: rgb(137 17 57);
+}
+#theme-toggle {
+    text-align: center;
+    margin: 20px 50% ;
+    transform: translateX(-50%);
+    cursor: pointer;
+    border: none;
+    background-color: #04a998;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 3px;
+    transition: 0.3s;
+    overflow: hidden;
+    color: yellow;
+    font-size: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+body.dark-mode #theme-toggle{
+    color: yellow;
+}
+
+body.dark-mode #theme-toggle{
+    background-color: rgb(137 17 57);
+    color: yellow;
+    transition: 0.3s;
+}
+
+body.dark-mode .social i,body.dark-mode footer span{
+    color: #E91E63;
+    transition: 0.3s;
+}
+
+body.dark-mode .social i:hover,body.dark-mode footer span:hover{
+    color:#04a998;
+    transform:scale(1.1);
+}
+
+footer{
+    text-align: center;
+    line-height: 1.6;
+    font-weight: bold;
+}
+
+.social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+.social ul li{
+    margin: 5px;
+    font-size: 30px;
+  
+    
+}
+.social i,footer span{
+    color: #04a998;
+    transition: 0.3s;
+}
+
+.social i:hover,footer span:hover{
+    color:#E91E63;
+    transform:scale(1.1);
+}
+
+
+
+
+@media (300px <= width <= 620px){
+    .hangman-draw{
+        width: 360px;
+    }
+
+.row{
+  flex-direction: column;
+  width: 360px;
+  margin: auto;
+}
+.letters .letter-box{
+    width: 30px;
+    height: 30px;
+    padding: 15px;
+}
+
+.latters-guess {
+    margin: 10px auto;
+    background-color: #F8F8F8;
+    padding: 20px;
+    width: 360px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    min-height: 104px;
+    transition: 0.7s;
+}
+
+.latters-guess span {
+margin: 10px;
+}
+
+.winPopup, .popup {
+    position: fixed;
+    background-color: #009688;
+    color: white;
+    padding: 100px 10px;
+    line-height: 1.6em;
+    width: 360px;
+    top: 15%;
+    left: 59%;
+    text-align: center;
+    font-size: 40px;
+    margin: auto;
+    border: 1px solid #ccc;
+    transform: translateX(-60%);
+}
+
+.game-info {
+     
+    justify-content: space-between;
+}
+.game-info .category {
+    flex: 1;
+}
+.game-info .hint{
+    flex: 0;
+}
+
+.game-info .game-name {
+    flex: 1;
+    margin-right: 30px;
+}
+
+
+}

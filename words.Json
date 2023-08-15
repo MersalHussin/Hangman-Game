@@ -1,0 +1,9 @@
+{
+        "programming":["PHP","JavaScript","Go","HTML","R","Ruby","Python","Mysql","C","Swift","CSS"],
+        "movie":["Interstaller","Openhimmer","Saw","Scrame","Whiplash","Coco","Legend"],
+        "people": ["Albert Einstein", "Hitchcock", "Alexander", "Cleopatra", "Mahatma Ghandi"],
+        "countries": ["Syria", "Palestine", "Yemen", "Egypt", "Bahrain", "Qatar"],
+        "singers":["Post Malone","Katy Perry" , "Alan Walker" , "Louis Fonsy" , "Tamer Hosni","Amir Eid"],
+        "music":["Rock Star" , "Roar" , "let me Down" , "Wahshteny","Alone","Mesh Temsal","Despcito","Eyes Do not lie"]
+    
+}
